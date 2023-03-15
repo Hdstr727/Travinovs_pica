@@ -29,4 +29,8 @@ public class Pizza {
 	public void setTopping(String pizzaTopping) {
 		topping = pizzaTopping;
 	}
+	
+	public String getTopping() {
+		return topping;
+	}
 }
