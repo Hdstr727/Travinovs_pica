@@ -40,6 +40,19 @@ public class Frame {
 		checkbox4.setBounds(260,260,95,20);
 		frame.add(l2); frame.add(checkbox1);frame.add(checkbox2);frame.add(checkbox3);frame.add(checkbox4);
 		
+		//Size 
+		JLabel l3 = new JLabel();
+		l3.setBounds(410, 20, 90, 30);
+		l3.setText("Size");
+		JRadioButton r5 = new JRadioButton("Small - 8 EUR");
+		r5.setBounds(390, 80, 110, 30);
+		JRadioButton r6 = new JRadioButton("Medium - 12 EUR");
+		r6.setBounds(390, 140, 130, 30);
+		JRadioButton r7 = new JRadioButton("Large - 15 EUR");
+		r7.setBounds(390, 200, 110, 30);
+		frame.add(r5); frame.add(r6); frame.add(r7); frame.add(l3);
+		
+		
 		
 		frame.setSize(800, 500);
 		frame.setLayout(null);
