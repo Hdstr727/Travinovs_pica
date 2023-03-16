@@ -39,8 +39,8 @@ public class Frame implements ActionListener {
 	TextField t2 = new TextField("");
 
 
-	//Pay
-	JButton b3 = new JButton("Pay");
+	//Order
+	JButton b3 = new JButton("Order");
 
 	public void CreateFrame() {
 		//JFrame frame = new JFrame("Pizza");
@@ -104,8 +104,8 @@ public class Frame implements ActionListener {
 		frame.add(l5);
 		frame.add(t2);
 
-		//Pay
-		b3.setBounds(545, 140, 60, 30);
+		//Order
+		b3.setBounds(535, 140, 80, 30);
 		frame.add(b3);
 
 		frame.setSize(680, 270);
