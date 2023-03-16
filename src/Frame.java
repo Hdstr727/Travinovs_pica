@@ -12,6 +12,7 @@ public class Frame implements ActionListener {
 	JRadioButton r2 = new JRadioButton("Sicilian");
 	JRadioButton r3 = new JRadioButton("Chicago");
 	JRadioButton r4 = new JRadioButton("Hawaiian");
+	ButtonGroup pizzaGroup = new ButtonGroup();
 
 	//Toppings
 	JLabel l2 = new JLabel("Topping:");
@@ -25,6 +26,7 @@ public class Frame implements ActionListener {
 	JRadioButton r5 = new JRadioButton("Small(25cm)- 8 EUR");
 	JRadioButton r6 = new JRadioButton("Medium(35cm) - 12 EUR");
 	JRadioButton r7 = new JRadioButton("Large(50cm) - 15 EUR");
+	ButtonGroup sizeGroup = new ButtonGroup();
 
 	//Number of pizzas
 	JLabel l4 = new JLabel("Quantity:");
@@ -51,7 +53,6 @@ public class Frame implements ActionListener {
 		r2.setBounds(50, 100, 80, 20);
 		r3.setBounds(50, 140, 80, 20);
 		r4.setBounds(50, 180, 80, 20);
-		ButtonGroup pizzaGroup = new ButtonGroup();
 		pizzaGroup.add(r1);
 		pizzaGroup.add(r2);
 		pizzaGroup.add(r3);
@@ -79,7 +80,6 @@ public class Frame implements ActionListener {
 		r5.setBounds(310, 60, 150, 30);
 		r6.setBounds(310, 100, 170, 30);
 		r7.setBounds(310, 140, 150, 30);
-		ButtonGroup sizeGroup = new ButtonGroup();
 		sizeGroup.add(r5);
 		sizeGroup.add(r6);
 		sizeGroup.add(r7);
@@ -230,14 +230,48 @@ public class Frame implements ActionListener {
 
 				String priceStr = Integer.toString(price);
 				System.out.println("Price: "+price);
-				t2.setText("123");
-				frame.repaint();
+				t2.setText(priceStr+" EUR");
+				t2.revalidate();
+				t2.repaint();
+				
 				System.out.println("PriceStr: "+priceStr);
-
-
 		}
-		else if (e.getSource() == b2)
+		if (e.getSource() == b2) {
 			t1.setText("");
 			t2.setText("");
+			t1.revalidate();
+			t1.repaint();
+			t2.revalidate();
+			t2.repaint();
+			pizzaGroup.clearSelection();
+			sizeGroup.clearSelection();
+			r1.revalidate();
+			r1.repaint();
+			r2.revalidate();
+			r2.repaint();
+			r3.revalidate();
+			r3.repaint();
+			r4.revalidate();
+			r4.repaint();
+			r5.revalidate();
+			r5.repaint();
+			r6.revalidate();
+			r6.repaint();
+			r7.revalidate();
+			r7.repaint();
+			checkbox1.setSelected(false);
+			checkbox1.revalidate();
+			checkbox1.repaint();
+			checkbox2.setSelected(false);
+			checkbox2.revalidate();
+			checkbox2.repaint();
+			checkbox3.setSelected(false);
+			checkbox3.revalidate();
+			checkbox3.repaint();
+			checkbox4.setSelected(false);
+			checkbox4.revalidate();
+			checkbox4.repaint();
+			
+		}
 	}
 }
