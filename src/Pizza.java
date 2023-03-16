@@ -2,16 +2,25 @@
 public class Pizza {
 	private int size;
 	private String type;
-	private String topping;
+	private boolean mushrooms = false;
+	private boolean cheese = false;
+	private boolean tomatoes = false;
+	private boolean pickles = false;
 	
-	public Pizza(int size, String type, String topping) {
+	
+	public Pizza(int size, String type, boolean mushrooms,
+			boolean cheese, boolean tomatoes, boolean pickles) {
 		this.size = size;
 		this.type = type;
-		this.topping = topping;
+		this.mushrooms = mushrooms;
+		this.cheese = cheese;
+		this.tomatoes = tomatoes; 
+		this.pickles = pickles;
+		
 	}
 	
 	public void setSize(int cm) {
-		size = cm;
+		this.size = cm;
 	}
 	
 	public int getSize() {
@@ -19,18 +28,16 @@ public class Pizza {
 	}
 	
 	public void setType(String pizzaType) {
-		type = pizzaType;
+		this.type = pizzaType;
 	}
 	
 	public String getType() {
 		return type;
 	}
 	
-	public void setTopping(String pizzaTopping) {
-		topping = pizzaTopping;
-	}
 	
-	public String getTopping() {
-		return topping;
-	}
+	
+	
+	
+	
 }
