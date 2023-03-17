@@ -2,8 +2,43 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.*;
 
 public class Frame implements ActionListener {
+	Pizza newPizza = null;
+	public static void writeToFile(Pizza pizza, String name, String address, String phoneNumber) {
+		try {
+			String data = "Name: " +name+ " Address: " +address+ " Phone number: " +phoneNumber
+					+ "Size: " + pizza.getSize() + ", "
+					+ "Type: " + pizza.getType() + ", "
+					+ "Mushrooms: " + pizza.getMushrooms() + ", "
+					+ "Cheese: " + pizza.getCheese() + ", "
+					+ "Tomatoes: " + pizza.getTomatoes() + ", "
+					+ "Pickles: " + pizza.getPickles() + "\n";;
+			FileWriter fw = new FileWriter("orders.txt", true);
+			PrintWriter pw = new PrintWriter(fw);
+			pw.print(data);
+			pw.close();
+			System.out.println("File created.");
+		} catch(IOException e) {
+			System.out.println("An error occurred while writing to the file.");
+		}
+	}
+
+	public static void readFromFile() {
+		String text, str = "";
+		try {
+			BufferedReader br = new BufferedReader(new FileReader("orders.txt"));
+
+			while ((text = br.readLine()) != null) {
+				str += text+"\n";
+			}
+			br.close();
+			JOptionPane.showMessageDialog(null, str);
+		} catch(IOException e) {
+			System.out.println("An error occurred while reading from the file.");
+		}
+	}
 
 	//Pizza types
 	JFrame frame = new JFrame("Pizza");
@@ -38,12 +73,13 @@ public class Frame implements ActionListener {
 	JLabel l5 = new JLabel("Total price:");
 	TextField t2 = new TextField("");
 
-
 	//Order
 	JButton b3 = new JButton("Order");
 
+	//Order history
+	JButton b4  = new JButton("Order history");
+
 	public void CreateFrame() {
-		//JFrame frame = new JFrame("Pizza");
 		frame.setLocationRelativeTo(null);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -108,6 +144,10 @@ public class Frame implements ActionListener {
 		b3.setBounds(535, 140, 80, 30);
 		frame.add(b3);
 
+		//Order history
+		b4.setBounds(510, 190, 120, 30);
+		frame.add(b4);
+
 		frame.setSize(680, 270);
 		frame.setLayout(null);
 		frame.setVisible(true);
@@ -124,6 +164,7 @@ public class Frame implements ActionListener {
 		b1.addActionListener(this);
 		b2.addActionListener(this);
 		b3.addActionListener(this);
+		b4.addActionListener(this);
 	}
 	int size = 0;
 	String selectedPizza = "";
@@ -139,20 +180,20 @@ public class Frame implements ActionListener {
 
 		if (e.getSource() == r1)
 			selectedPizza = "Peperoni";
-		 else if (e.getSource() == r2)
+		else if (e.getSource() == r2)
 			selectedPizza = "Sicilian";
-		 else if (e.getSource() == r3)
+		else if (e.getSource() == r3)
 			selectedPizza = "Chicago";
-		 else if (e.getSource() == r4)
+		else if (e.getSource() == r4)
 			selectedPizza = "Hawaiian";
 
 
 		//Pizza toppings
-		int mushPrice = 0;
-		int cheesePrice = 0;
-		int tomatoPrice = 0;
-		int picklePrice = 0;
-		
+		int mushPrice;
+		int cheesePrice;
+		int tomatoPrice;
+		int picklePrice;
+
 
 		if (checkbox1.isSelected()) {
 			mushrooms = true;
@@ -210,32 +251,32 @@ public class Frame implements ActionListener {
 		}
 
 		int price = 0;
-		Pizza newPizza;
 		//Number of pizzas
 		if (e.getSource() == b1) {
 			numberOfPizzas = Integer.parseInt(t1.getText());
-			//if (size!=0 && !selectedPizza.equals("") && numberOfPizzas != 0) {
-				newPizza = new Pizza(size, selectedPizza, mushrooms, cheese, tomato, pickle);
-				System.out.println("Created a new pizza object");
-				if (size == 25) {
-					price = numberOfPizzas * (8 + mushPrice + cheesePrice + tomatoPrice + picklePrice);
+			newPizza = new Pizza(size, selectedPizza, mushrooms, cheese, tomato, pickle);
+			System.out.println("Created a new pizza object");
+			System.out.println(newPizza.getSize());
+			if (size == 25) {
+				price = numberOfPizzas * (8 + mushPrice + cheesePrice + tomatoPrice + picklePrice);
 
-				}
-				else if (size == 35) {
-					price = numberOfPizzas * (12 + mushPrice + cheesePrice + tomatoPrice + picklePrice);
-				}
-				else if (size == 50) {
-					price = numberOfPizzas * (15 + mushPrice + cheesePrice + tomatoPrice + picklePrice);
-				}
+			}
+			else if (size == 35) {
+				price = numberOfPizzas * (12 + mushPrice + cheesePrice + tomatoPrice + picklePrice);
+			}
+			else if (size == 50) {
+				price = numberOfPizzas * (15 + mushPrice + cheesePrice + tomatoPrice + picklePrice);
+			}
 
-				String priceStr = Integer.toString(price);
-				System.out.println("Price: "+price);
-				t2.setText(priceStr+" EUR");
-				t2.revalidate();
-				t2.repaint();
-				
-				System.out.println("PriceStr: "+priceStr);
+			String priceStr = Integer.toString(price);
+			System.out.println("Price: "+price);
+			t2.setText(priceStr+" EUR");
+			t2.revalidate();
+			t2.repaint();
+
+			System.out.println("PriceStr: "+priceStr);
 		}
+		//Clear
 		if (e.getSource() == b2) {
 			t1.setText("");
 			t2.setText("");
@@ -271,7 +312,27 @@ public class Frame implements ActionListener {
 			checkbox4.setSelected(false);
 			checkbox4.revalidate();
 			checkbox4.repaint();
-			
+
 		}
+		//Order
+		String name;
+		String address;
+		String phoneNumber;
+		if (e.getSource() == b3) {
+			name = JOptionPane.showInputDialog("Enter your name: ");
+			address = JOptionPane.showInputDialog("Enter your address: ");
+			phoneNumber = JOptionPane.showInputDialog("Enter your phone number: ");
+
+
+				writeToFile(newPizza, name, address , phoneNumber);
+				JOptionPane.showMessageDialog(null, "Your order is registered!");
+
+		}
+
+		//Order history
+		if (e.getSource() == b4) {
+			readFromFile();
+		}
+
 	}
 }
