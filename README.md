@@ -7,5 +7,4 @@ Skolas picas projekts :pizza:
 - [x] Uzsākts lokāli Java projekts un veikta sakotnējās versijas versionēšana
 - [x] Izveidots repo GitHub
 - [x] Projektā ieviests jauns zars
-- [ ] Projekta uzlabots GUI izskats
-- [ ] Projekta novērstas kļudas, uzlabota funkcionālitāte
+- [x] Projekta uzlabots GUI izskats

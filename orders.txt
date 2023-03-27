@@ -1,1 +1,0 @@
-Name: Aleks Address: Nikitos Phone number: 123123Size: 25, Type: Peperoni, Mushrooms: true, Cheese: true, Tomatoes: false, Pickles: false
