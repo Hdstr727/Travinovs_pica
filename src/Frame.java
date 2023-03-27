@@ -78,17 +78,22 @@ public class Frame implements ActionListener {
 
 	//Order history
 	JButton b4  = new JButton("Order history");
-
+	
 	public void CreateFrame() {
 		frame.setLocationRelativeTo(null);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
+		
+		Color color = new Color(204,166,166);
 		//Pizza types
 		l1.setBounds(50, 20, 90, 30);
 		r1.setBounds(50, 60, 80, 20);
+		r1.setBackground(color);
 		r2.setBounds(50, 100, 80, 20);
+		r2.setBackground(color);
 		r3.setBounds(50, 140, 80, 20);
+		r3.setBackground(color);
 		r4.setBounds(50, 180, 80, 20);
+		r4.setBackground(color);
 		pizzaGroup.add(r1);
 		pizzaGroup.add(r2);
 		pizzaGroup.add(r3);
@@ -102,9 +107,13 @@ public class Frame implements ActionListener {
 		//Toppings
 		l2.setBounds(180, 20, 90, 30);
 		checkbox1.setBounds(180, 60, 95, 20);
+		checkbox1.setBackground(color);
 		checkbox2.setBounds(180, 100, 100, 20);
+		checkbox2.setBackground(color);
 		checkbox3.setBounds(180, 140, 95, 20);
+		checkbox3.setBackground(color);
 		checkbox4.setBounds(180, 180, 95, 20);
+		checkbox4.setBackground(color);
 		frame.add(l2);
 		frame.add(checkbox1);
 		frame.add(checkbox2);
@@ -114,8 +123,11 @@ public class Frame implements ActionListener {
 		//Size
 		l3.setBounds(310, 20, 90, 30);
 		r5.setBounds(310, 60, 150, 30);
+		r5.setBackground(color);
 		r6.setBounds(310, 100, 170, 30);
+		r6.setBackground(color);
 		r7.setBounds(310, 140, 150, 30);
+		r7.setBackground(color);
 		sizeGroup.add(r5);
 		sizeGroup.add(r6);
 		sizeGroup.add(r7);
@@ -147,8 +159,9 @@ public class Frame implements ActionListener {
 		//Order history
 		b4.setBounds(510, 190, 120, 30);
 		frame.add(b4);
-
+		
 		frame.setSize(680, 270);
+		frame.getContentPane().setBackground(color);
 		frame.setLayout(null);
 		frame.setVisible(true);
 		frame.revalidate();
