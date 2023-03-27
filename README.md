@@ -8,4 +8,3 @@ Skolas picas projekts :pizza:
 - [x] Izveidots repo GitHub
 - [x] Projektā ieviests jauns zars
 - [x] Projekta uzlabots GUI izskats
-- [ ] Projekta novērstas kļudas, uzlabota funkcionālitāte
