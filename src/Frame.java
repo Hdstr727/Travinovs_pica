@@ -5,6 +5,8 @@ import java.awt.event.ActionListener;
 import java.io.*;
 
 public class Frame implements ActionListener {
+	
+	
 	Pizza newPizza = null;
 	public static void writeToFile(Pizza pizza, String name, String address, String phoneNumber) {
 		try {
@@ -79,6 +81,42 @@ public class Frame implements ActionListener {
 	//Order history
 	JButton b4  = new JButton("Order history");
 	
+	public void clear() {
+		t1.setText("");
+		t2.setText("");
+		t1.revalidate();
+		t1.repaint();
+		t2.revalidate();
+		t2.repaint();
+		pizzaGroup.clearSelection();
+		sizeGroup.clearSelection();
+		r1.revalidate();
+		r1.repaint();
+		r2.revalidate();
+		r2.repaint();
+		r3.revalidate();
+		r3.repaint();
+		r4.revalidate();
+		r4.repaint();
+		r5.revalidate();
+		r5.repaint();
+		r6.revalidate();
+		r6.repaint();
+		r7.revalidate();
+		r7.repaint();
+		checkbox1.setSelected(false);
+		checkbox1.revalidate();
+		checkbox1.repaint();
+		checkbox2.setSelected(false);
+		checkbox2.revalidate();
+		checkbox2.repaint();
+		checkbox3.setSelected(false);
+		checkbox3.revalidate();
+		checkbox3.repaint();
+		checkbox4.setSelected(false);
+		checkbox4.revalidate();
+		checkbox4.repaint();
+	}
 	public void CreateFrame() {
 		frame.setLocationRelativeTo(null);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -291,40 +329,7 @@ public class Frame implements ActionListener {
 		}
 		//Clear
 		if (e.getSource() == b2) {
-			t1.setText("");
-			t2.setText("");
-			t1.revalidate();
-			t1.repaint();
-			t2.revalidate();
-			t2.repaint();
-			pizzaGroup.clearSelection();
-			sizeGroup.clearSelection();
-			r1.revalidate();
-			r1.repaint();
-			r2.revalidate();
-			r2.repaint();
-			r3.revalidate();
-			r3.repaint();
-			r4.revalidate();
-			r4.repaint();
-			r5.revalidate();
-			r5.repaint();
-			r6.revalidate();
-			r6.repaint();
-			r7.revalidate();
-			r7.repaint();
-			checkbox1.setSelected(false);
-			checkbox1.revalidate();
-			checkbox1.repaint();
-			checkbox2.setSelected(false);
-			checkbox2.revalidate();
-			checkbox2.repaint();
-			checkbox3.setSelected(false);
-			checkbox3.revalidate();
-			checkbox3.repaint();
-			checkbox4.setSelected(false);
-			checkbox4.revalidate();
-			checkbox4.repaint();
+			clear();
 
 		}
 		//Order
@@ -339,7 +344,7 @@ public class Frame implements ActionListener {
 
 				writeToFile(newPizza, name, address , phoneNumber);
 				JOptionPane.showMessageDialog(null, "Your order is registered!");
-
+				clear();
 		}
 
 		//Order history
